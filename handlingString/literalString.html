@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>let</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<p id="content1"></p>
+<script>
+	let longString = "This is a very long string which needs " +
+                     "to wrap across multiple \n\r lines because " +
+                     "otherwise my code is unreadable.";
+    var element1 = document.getElementById("content1");
+    element1.textContent = longString;
+</script>
+</body>
+</html>
