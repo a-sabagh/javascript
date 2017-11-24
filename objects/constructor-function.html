@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>object create</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>You can see all proccess in console</h1>
+	<script>
+		function file(name,size,type){
+			this.name = name;
+			this.size = size;
+			this.type = type;
+		}
+		var file1 = new file("gnutec.png" , "3423423" , "image/png");
+		console.log(file1);
+		var files = {
+			0 : new file("gnutec.png" , "3423423" , "image/png"),
+			1 : new file("gnutec1.png" , "3423423" , "image/png"),
+			2 : new file("gnutec2.png" , "3423423" , "image/png")
+		};
+		console.log(files);
+	</script>
+</body>
+</html>
