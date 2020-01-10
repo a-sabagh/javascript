@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Load jQuery</title>
+</head>
+<body>
+     <script>
+          let loadScript = (source) => {
+               var scriptPromise = new Promise((resolve,reject)=>{
+                    let script = document.createElement('script');
+                    script.src = source;
+                    script.onload = () => {
+                         resolve(source);
+                    }
+                    script.onerror = () => {
+                         reject(new Error(source));
+                    }
+                    document.head.append(script);
+               });
+               return scriptPromise;
+          }
+          let scriptPromise = loadScript('https://code.jquery.com/jquery-3.4.1.min.js');
+          scriptPromise.then((onSuccess)=>{
+               console.log(onSuccess);
+          }).catch((onFail)=>{
+               console.log(onFail);
+          });
+     </script>
+</body>
+</html>
