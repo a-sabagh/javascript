@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sample timer</title>
+	<style>
+		div{
+		  	text-align:center;
+		  	margin: 1em;
+			font-size:3em;
+		}
+		button{
+			font-size: .5em;; 
+			display: inline-block;
+			padding: 1em;
+			margin: 1em;
+			border: 1px solid white;
+			color: white;
+			cursor: pointer;
+		}
+		button:disabled {
+			cursor: not-allowed;
+			background-color: gray !important;
+		}
+		#start{
+			background:  green;
+		}
+		#pause{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="counter">0</div>
+	<div class="buttons">
+		<button id="start" onclick="start(this)">start</button>
+		<button id="pause" onclick="pause(this)">pause</button>
+	</div>
+	<script>
+		var counter = 0;
+		var start = (button) => {
+			button.disabled = true
+			button.nextElementSibling.disabled = false
+			window.interval = setInterval(()=>{
+				counter++;
+				window.document.getElementById('counter').innerText = counter
+			},1000);
+		}
+		var pause = (button) => {
+			button.disabled = true
+			button.previousElementSibling.disabled = false
+			clearInterval(window.interval);
+		}
+	</script>
+</body>
+</html>
