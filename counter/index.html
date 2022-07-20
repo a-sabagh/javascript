@@ -29,6 +29,9 @@
 		#pause{
 			background: red;
 		}
+		#reset{
+			background: orange;
+		}
 	</style>
 </head>
 <body>
@@ -36,20 +39,46 @@
 	<div class="buttons">
 		<button id="start" onclick="start(this)">start</button>
 		<button id="pause" onclick="pause(this)">pause</button>
+		<button id="reset" onclick="reset(this)">reset</button>
 	</div>
+	<script src="js.cookie.js"></script>
 	<script>
-		var counter = 0;
-		var start = (button) => {
+		var counter = window.Cookies.get('counter') >= 0 ? window.Cookies.get('counter') : 0;
+		var statusCallback = window.Cookies.get('status')
+		console.log(statusCallback,window[statusCallback])
+		if(undefined != window[statusCallback] || true){
+			window[statusCallback]()
+			window.document.getElementById('counter').innerText = counter
+		}
+		function start(button){
+			window.Cookies.set('status','start')
+			var button = (undefined == button)? document.getElementById('start') : button
 			button.disabled = true
 			button.nextElementSibling.disabled = false
+			button.nextElementSibling.nextElementSibling.disabled = false
 			window.interval = setInterval(()=>{
 				counter++;
+				window.Cookies.set('counter',counter)
 				window.document.getElementById('counter').innerText = counter
 			},1000);
 		}
-		var pause = (button) => {
+		function pause(button){
+			window.Cookies.set('status','pause')
+			var button = (undefined == button)? document.getElementById('pause') : button
 			button.disabled = true
+			button.nextElementSibling.disabled = false
 			button.previousElementSibling.disabled = false
+			clearInterval(window.interval);
+		}
+		function reset(button){
+			window.Cookies.set('status','reset')
+			var button = (undefined == button)? document.getElementById('reset') : button
+			button.disabled = true
+			button.previousElementSibling.disabled = true
+			button.previousElementSibling.previousElementSibling.disabled = false
+			counter = 0
+			window.Cookies.set('counter',counter)
+			window.document.getElementById('counter').innerText = counter
 			clearInterval(window.interval);
 		}
 	</script>
