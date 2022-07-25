@@ -1,25 +1,27 @@
 class countdownTimer {
 
+	#counter = 5 
+
 	constructor(minuteElement,secondElement,counter){
 		this.minuteElement = minuteElement
 		this.secondElement = secondElement
-		this.counter = counter
+		this.#counter = counter
 		this.event = new Event('counter')
 	}
 
-	calculateParams() {
-		this.second = this.counter % 60
-		this.minute = Math.floor(this.counter / 60)
+	#calculateParams() {
+		this.second = this.#counter % 60
+		this.minute = Math.floor(this.#counter / 60)
 		return this
 	}
 
-	setHtml(){
+	#setHtml(){
 		this.minuteElement.innerHTML = this.minute
 		this.secondElement.innerHTML = this.second
 		return this
 	}
 
-	setStatus(status){
+	#setStatus(status){
 		this.status = status
 		return this
 	}
@@ -29,14 +31,14 @@ class countdownTimer {
 			return this
 		}
 		this.timerInterval = setInterval(() => {
-			this.calculateParams().setHtml()
-			this.counter--
-			if(0 == this.counter){
+			this.#calculateParams().#setHtml()
+			this.#counter--
+			if(0 == this.#counter){
 				document.dispatchEvent(this.event)
 				this.stop()
 			}
 		},1000)
-		this.setStatus('start')
+		this.#setStatus('start')
 		return this
 	}
 
@@ -45,7 +47,7 @@ class countdownTimer {
 			return this
 		}
 		clearInterval(this.timerInterval)
-		this.setStatus('pause')
+		this.#setStatus('pause')
 		return this
 	}
 
@@ -53,8 +55,8 @@ class countdownTimer {
 		if('stop' == this.status){
 			return this
 		}
-		this.pause().counter = 0
-		this.setStatus('stop').calculateParams().setHtml()
+		this.pause().#counter = 0
+		this.#setStatus('stop').#calculateParams().#setHtml()
 		document.dispatchEvent(this.event)
 		return this
 	}
@@ -63,8 +65,8 @@ class countdownTimer {
 		if('restart' == this.status){
 			return this
 		}
-		this.stop().counter = counter
-		this.setStatus('restart').start()
+		this.stop().#counter = counter
+		this.#setStatus('restart').start()
 		return this
 	}
 
