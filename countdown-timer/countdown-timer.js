@@ -27,13 +27,13 @@ class countdownTimer {
 	}
 
 	start = () => {
-		if('start' == this.status){
+		if('start' == this.status && this.#counter <= 0){
 			return this
 		}
 		this.timerInterval = setInterval(() => {
 			this.#calculateParams().#setHtml()
 			this.#counter--
-			if(0 == this.#counter){
+			if(this.#counter <= 0){
 				document.dispatchEvent(this.event)
 				this.stop()
 			}
