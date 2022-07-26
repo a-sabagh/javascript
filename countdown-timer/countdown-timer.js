@@ -71,3 +71,5 @@ class countdownTimer {
 	}
 
 }
+
+export {countdownTimer}

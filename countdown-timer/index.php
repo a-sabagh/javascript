@@ -8,16 +8,7 @@
 	<div class="countdown-timer">
 		<span id="minute">0</span>:<span id="second">0</span>	
 	</div>
-	<script src="./countdown-timer.js"></script>
-	<script>
-	document.addEventListener('counter',function(){
-		console.log('counter is finished and stop !!')
-	})
-	let minuteElement = document.getElementById('minute')
-	let secondElement = document.getElementById('second')
-	let counter = 2000
-	let timer = new countdownTimer(minuteElement,secondElement,counter)
-	console.log(timer.counter)
-	</script>
+	<script src="./countdown-timer.js" type="module"></script>
+	<script src="./main.js" type="module"></script>
 </body>
 </html>
