@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		var a = [
+			'toyota',
+			[
+				'lexus'
+			],
+			'gmc',
+			[
+				'cadillac',
+				'buick',
+				'chevrolet'
+			],
+			'hyondai',
+			'pegaut'
+		]
+
+		function recursive_list(list){
+		  var ul = document.createElement('ul')
+			for(let elem of list){
+				if(elem instanceof Array){
+					ul.appendChild(recursive_list(elem));
+				}else{
+					var listItem = document.createElement('li')
+					var text = document.createTextNode(elem)
+					listItem.appendChild(text)
+					ul.appendChild(listItem)
+				}
+			}
+			return ul;
+		}
+		var unsortedList = recursive_list(a)
+		document.body.appendChild(unsortedList)
+	</script>
+</body>
+</html>
+
