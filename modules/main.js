@@ -22,3 +22,5 @@ import func from './app.js'*/
 /*
 import func , {x,y} from './app.js'
 console.log(func(x,y))*/
+
+//document.body.style.background = 'red'
