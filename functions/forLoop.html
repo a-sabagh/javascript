@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		var a = [
+			'toyota',
+			[
+				'lexus'
+			],
+			'gmc',
+			[
+				'cadillac',
+				'buick',
+				'chevrolet'
+			],
+			'hyondai',
+			'pegaut'
+		]
+
+		var ul = document.createElement('ul')
+		for(let elemParent of a){
+			if(elemParent instanceof Array){
+				var ulChild = document.createElement('ul')
+				for(let elem of elemParent){
+					var listItem = document.createElement('li')
+					var text = document.createTextNode(elem)
+					listItem.appendChild(text)
+					ulChild.appendChild(listItem)
+				}
+				ul.appendChild(ulChild)
+			}else{
+				var listItem = document.createElement('li')
+				var text = document.createTextNode(elemParent)
+				listItem.appendChild(text)
+				ul.appendChild(listItem)
+			}
+		}
+		document.body.appendChild(ul)
+	</script>
+</body>
+</html>
+
