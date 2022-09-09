@@ -6,7 +6,7 @@
 </head>
 <body>
 	<script>
-		fetch('http://localhost/javascript/fetch/server.php')
+		fetch('server.php')
 		.then((response) => {
 			response.json().then(response => console.log(response))
 				.catch(error => console.log(error))
