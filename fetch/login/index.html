@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<h3 id="login-message">Login Form</h3>
+	<form action="" id="login-form" method="post" onsubmit="doLogin(event)">
+		<div class="form-field">
+			<input type="text" name="username">
+		</div>
+		<div class="form-field">
+			<input type="password" name="password">
+		</div>
+		<div class="form-filed">
+			<input type="submit" name="send" value="login">
+		</div>
+	</form>
+	<script>
+		const doLogin = (event) => {
+			let formData = new FormData(document.getElementById('login-form'))
+			event.preventDefault()
+			fetch('login.php',{
+				body: formData,
+				method: "POST"
+			})
+			.then( (response) => {
+				console.log(response.ok)
+				if(response.ok){
+					return response.json()
+				}
+				throw new Error('Unauthorized')
+			}).then( (result) => {
+				document.getElementById('login-message').innerText = result.data.message
+			}).catch((error) => {
+				document.getElementById('login-message').innerText = error
+			});
+		}
+	</script>
+</body>
+</html>
