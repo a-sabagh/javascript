@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Uploading single file</title>
+</head>
+<body>
+	<form action="" method="post" onsubmit="uploadSingleFile(event)">
+		<input type="file" name="picture" class="file">
+		<input type="submit" name="upload" value="upload">
+	</form>
+	<script>
+		const uploadSingleFile = (event) => {
+			event.preventDefault()
+			let formData = new FormData()
+			let picture = document.querySelector('.file').files[0]
+			formData.append('picture',picture)
+
+			fetch('server.php',{
+				method: 'post',
+				body: formData,
+			})
+			.then((response) => {
+				return response.json()
+			}).then((result) => {
+				console.log(result)
+			})
+		}
+	</script>
+</body>
+</html>
