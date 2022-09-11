@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 if(empty($_FILES)){
 	header('HTTP/1.1 500 Internal Server Error');
 	echo json_encode([

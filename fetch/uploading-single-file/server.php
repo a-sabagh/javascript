@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 $picture = @$_FILES['picture']['tmp_name'];
 $result = move_uploaded_file($picture,'picture.jpg');
 
