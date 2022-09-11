@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Header Interface</title>
+</head>
+<body>
+	
+	<script>
+		let content = 'Hello from Client'
+		const headers = new Headers({
+			'Content-Type': 'text/plain'
+		})
+		const request = new Request('server.php',{
+			method: "post",
+			body: content,
+			headers: headers,
+		})
+		fetch(request)
+		.then( (response) => {
+			if(response.ok){
+				return response.text()
+			}
+			throw new Error('error is accured')
+		}).then( (result) => {
+			console.log(result)
+		}).catch( (error) => {
+			console.error(error)
+		})
+	</script>
+</body>
+</html>
