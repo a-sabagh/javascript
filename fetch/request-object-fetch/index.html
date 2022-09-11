@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Supplying your request object</title>
+</head>
+<body>
+	<script>
+		let formData = new FormData();
+		formData.append('firstName','abolfazl');
+		formData.append('lastName','sabagh');
+		const request = new Request('server.php',{
+			method: "post",
+			body: formData,
+		})
+		fetch(request)
+		.then( (response) => {
+			if(response.ok){
+				return response.json()
+			}else{
+				throw new Error('error is accoured')
+			}
+		}).then( (result) => {
+			console.log('Request Body',result.data.requestBody)
+		}).catch( (error) => {
+			console.error(error)
+		}).finally( () => {
+			console.log('finally is accoured')
+		})
+	</script>
+</body>
+</html>
