@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		fetch('server.php')
+		.then((response) => {
+			console.log('response status code',response.status)
+			console.log('response status text',response.statusText)
+			console.log('response ok',response.ok)
+		}).catch(error => console.error(error))
+	</script>
+</body>
+</html>
