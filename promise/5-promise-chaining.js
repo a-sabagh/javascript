@@ -1,11 +1,11 @@
-function doSomething(){
+function happyProgrammersDay(){
 	return new Promise((resolve,reject) => {
 		return resolve('happy')
 	})
 }
 
 
-doSomething()
+happyProgrammersDay()
 .then( (response) => {
 	console.log(response)
 	return 'programmers'
