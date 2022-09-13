@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>uploading multiple files</title>
+</head>
+<body>
+	<div class="message-box"></div>
+	<form action="" method="post" onsubmit="uploadMultiple(event)">
+		<input type="file" name="gallery" class="gallery" multiple>
+		<input type="submit" name="upload" value="upload">
+	</form>
+	<script>
+		let uploadMultiple = (event) => {
+			event.preventDefault()
+			let formData = new FormData;
+			let files = document.querySelector('.gallery').files
+			let i = 0
+			for(let file of files){
+				formData.append(`gallery_${i}`,file)
+				i++
+			}
+			fetch('server.php',{
+				method: "post",
+				body: formData
+			}).then( (response) => {
+				if(!response.ok){
+					throw Error('throw an Internal Server Error')
+				}
+				return response.json()
+			}).then( (result) => {
+				const list = document.createElement('ul')
+				for(let item of result.data.gallery){
+					let listItem = document.createElement('li')
+					listItem.innerText = item
+					list.appendChild(listItem)
+				}
+				document.querySelector('.message-box').innerHTML = list.outerHTML
+			}).catch( (error) => {
+				document.querySelector('.message-box').innerHTML = error
+			})
+		}
+	</script>
+</body>
+</html>
