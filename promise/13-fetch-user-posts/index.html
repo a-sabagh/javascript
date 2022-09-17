@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Get User Posts</title>
+</head>
+<body>
+
+	<div id="content-body"></div>
+	<script>
+	fetch('users.php?username=admin').then( (response) => {
+		if(response.ok){
+			return response.json()
+		}else{
+			throw new Error('user not found!!')
+		}
+	}).then( (collection) => {
+		return collection.data.user.id
+	}).then( (userId) => {
+		fetch(`posts.php?user_id=${userId}`)
+		.then( (response) => {
+			if(response.ok){
+				return response.json()
+			} else {
+				throw new Error('posts not found')
+			}
+		}).then( (responseData) => {
+			posts = responseData.data.posts
+			let div = document.createElement('div')
+			posts.forEach( (post,index) => {
+				let heading = document.createElement('h3')
+				heading.innerText = post.title
+				div.append(heading)
+				let paragraph = document.createElement('p')
+				paragraph.innerText = post.content
+				div.append(paragraph)
+			})
+			document.getElementById('content-body').append(div)
+		})
+	}).catch( (error) => {
+		console.error(error)
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>(Async-Await)Get User Posts</title>
+</head>
+<body>
+	<button onclick="loadPosts(event)">Load Posts</button>
+	<div id="content-body"></div>
+	<script>
+	async function loadPosts(event){
+		event.preventDefault()
+		let username = 'admin'
+		let userResponse = await fetch(`users.php?username=${username}`)
+		let userResponseData = await userResponse.json()
+		let userId = userResponseData.data.user.id
+		let postsResponse = await fetch(`posts.php?user_id=${userId}`)
+		let postsResponseData = await postsResponse.json()
+		let posts = postsResponseData.data.posts
+		/* append posts in dom */
+		let div = document.createElement('div')
+		posts.forEach( (post,index) => {
+			let heading = document.createElement('h3')
+			heading.innerText = post.title
+			div.append(heading)
+			let paragraph = document.createElement('p')
+			paragraph.innerText = post.content
+			div.append(paragraph)
+		})
+		document.getElementById('content-body').append(div)
+	}
+	</script>
+</body>
+</html>
