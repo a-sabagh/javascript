@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	<script>
+		async function usersStepOne() {
+			return await fetch('https://reqres.in/api/users?page=1')
+		}
+
+		async function usersStepTow(){
+			return await fetch('https://reqres.in/api/users?page=2')
+		}
+
+		Promise.all([
+			usersStepOne(),
+			usersStepTow(),
+		]).then(([responsePageOne,responsePageTow]) => {
+			/** instead of return [resonsePageOne.json(),responsePageTow] **/
+			Promise.all([
+				responsePageOne.json(),
+				responsePageTow.json(),
+			]).then( ([usersPageOne,usersPageTow]) => {
+				let users = {...usersPageOne.data,...usersPageTow.data}
+				console.log(users)
+			})
+		})
+	</script>
+</body>
+</html>
