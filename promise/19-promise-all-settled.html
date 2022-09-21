@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	<script>
+	Promise.allSettled([
+		new Promise( (resolve,reject) => {
+			resolve(10)
+		}),	
+		new Promise( (resolve,reject) => {
+			setTimeout( () => {
+				resolve(54)
+			},2000)
+		}),
+	]).then( (values) => {
+		console.log(values)
+	} )
+	</script>
+</body>
+</html>
