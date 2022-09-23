@@ -1,5 +1,7 @@
 const foo = new Promise ( (resolve,reject) => {
-	resolve('foo')
+	setTimeout( () => {
+		resolve('foo')
+	},5000)
 })
 
 const bar = new Promise ( (resolve,reject) => {
