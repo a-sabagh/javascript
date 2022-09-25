@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise Load Image</title>
+</head>
+<body>
+	
+	<h1>Promise Load Image</h1>
+	<script>
+		function LoadImageBlob(relativeUrl){
+			return new Promise( (resolve,reject) => {
+				let request = new XMLHttpRequest()
+				request.open('GET','js.png')
+				request.responseType = 'blob'
+				request.send()
+				request.onload = () => {
+					if(4 == request.readyState && 200 == request.status){
+						resolve(request.response)
+					}
+					reject(request.statusText)
+				}
+			})
+		}
+		
+		LoadImageBlob('js.png').then( (response) => {
+			let image = new Image()
+			let imageUrl = window.URL.createObjectURL(response)
+			image.src = imageUrl
+			document.body.appendChild(image)
+		}).catch( (reason) => {
+			console.error(reason)
+		})
+	</script>
+</body>
+</html>
