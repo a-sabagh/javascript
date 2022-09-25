@@ -5,11 +5,16 @@ h1{
 .gallery{
 	width: 80%;
 	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #7778e3;
+	padding: 3em;
 }
 
 .gallery img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin: 1em;
     border: 1px solid gray;
 }
