@@ -1,4 +1,5 @@
 const obj = {
+	//or define as *generator(){}
 	generator: function * (){
 		yield 1
 		yield 2
