@@ -1,5 +1,6 @@
 let name = 'ali'
-let newName = `${name} reza`
+let newName = name
+newName = `${newName} reza`
 
 console.log(name,newName)
 
