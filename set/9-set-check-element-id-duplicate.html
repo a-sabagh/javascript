@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<p id="greathing">Hello World</p>
+	<p>Sit asperiores doloribus?</p>
+	<p>Amet tempore.</p>
+	<p id="greathing">Hello World</p>
+	<p>Adipisicing ipsum sequi cumque.</p>
+	<p id="greathing">Hello World</p>
+	<p id="greathing">Hello World</p>
+	<p id="greathing">Hello World</p>
+
+	<script>
+		let elements = document.querySelectorAll('#greathing')
+		let ids = Array.from(elements).map( (e) => { e.id })
+		let s = new Set(ids)
+		console.assert(s.size == ids.length)
+	</script>
+</body>
+</html>
