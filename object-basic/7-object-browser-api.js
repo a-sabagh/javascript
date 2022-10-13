@@ -4,4 +4,6 @@ let bool = new Boolean
 let obj = new Object
 let arr = new Array
 
-console.log(str,num,bool,obj,arr)
+let d = new Date /* Math*/
+
+console.log(str,num,bool,obj,arr,d)
