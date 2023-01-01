@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animation scale</title>
+	<style>
+	.box{
+		background: steelblue;
+		width: 300px;
+		height: 300px;
+		display: none;
+		margin: auto;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 100px;
+		animation-name: animateTop;
+		animation-duration: 1s;
+	}
+	@keyframes animateTop{
+		from {
+			top: -300px;
+			opacity: 0;
+		}
+		to{
+			top: 100px;
+			opacity: 1;
+		}
+	}
+	</style>
+</head>
+<body>
+	
+	<div class="box"></div>
+	<button onclick="animateTop(event)">Animate top</button>
+	<script>
+		let animateTop = (event) => {
+			document.querySelector('.box').style.display = 'block';
+		}
+	</script>
+</body>
+</html>
