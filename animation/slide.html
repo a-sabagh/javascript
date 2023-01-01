@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Slide Animation</title>
+	<style>
+	div {
+		transition:height 1s ease-out;
+		height:0;
+		overflow:hidden;
+		font-size:24px;
+		background: #4679bd;
+		color:white;
+	}
+	</style>
+</head>
+<body>
+	<div></div>
+	<button onclick="slideDown(event)">Slide Down</button>
+	<button onclick="slideUp(event)">Slide Up</button>
+	<script>
+	function slideDown(event){
+		event.preventDefault()
+		document.querySelector("div").style.height = "240px";
+	}
+
+	function slideUp(event){
+		event.preventDefault()
+		document.querySelector("div").style.height = "0";
+	}
+	</script>
+</body>
+</html>
