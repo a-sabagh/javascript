@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toggle list</title>
+	<style>
+	ul {
+		transition: height 1s ease;
+		height: 0;
+		overflow: hidden;
+	}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>Elit veritatis ea magni culpa?</li>
+		<li>Amet quas saepe?</li>
+		<li>Amet vitae molestiae nostrum</li>
+		<li>Lorem numquam esse provident expedita nam</li>
+	</ul>
+	<button onclick="toggle(event)">Toggle List</button>
+	<script>
+	function toggle(event){
+		let list = document.querySelector('ul')
+		let height = list.classList.contains('active') ? '0' : list.scrollHeight
+		list.style.height = `${height}px`
+		list.classList.toggle('active')
+	}
+	</script>
+</body>
+</html>
