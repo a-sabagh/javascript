@@ -2,7 +2,8 @@ import persianDate from 'persian-date'
 
 window.convertJalali = (event) => {
 	let targetValue = event.target.value
-	let pd = new persianDate(targetValue)
+	let date = new Date(targetValue)
+	let pd = new persianDate(date)
 	let arr = [
 		pd.format('dddd'),
 		pd.format('MMMM'),
@@ -10,6 +11,7 @@ window.convertJalali = (event) => {
 		pd.format('h:mm:ss a'),
 		pd.format(),
 	]
+	console.log(targetValue,arr)
 	document.querySelectorAll('li').forEach((item,index)=>{
 		item.querySelector('span').innerText = arr[index]
 	})
