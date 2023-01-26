@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hashchange</title>
+</head>
+<body>
+	
+	<script>
+	addEventListener('hashchange',function(event){
+		let newUrl = event.newURL
+		let url = new URL(newUrl)
+		let hash = url.hash
+		console.log(hash)
+	})
+	</script>
+</body>
+</html>
