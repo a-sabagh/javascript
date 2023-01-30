@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Push State</title>
+</head>
+<body >
+	<a href="hello-world" onclick="pushStateCallback(event)" title="hello world">push state</a> 
+	<script>
+	window.pushStateCallback = (event) => {
+		event.preventDefault();
+		let title = event.target.title
+		let path = event.target.href
+		window.history.pushState({userId:10},null,path)
+		document.title = title
+	}
+	</script>
+</body>
+</html>
